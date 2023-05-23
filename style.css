@@ -1,0 +1,202 @@
+
+body{
+    background: #000;
+}
+
+.contenedor{
+    width: 100%;
+    display: grid;
+    grid-gap:20px; 
+    grid-template-columns: repeat(4,auto);
+    grid-template-rows: repeat(6,auto);
+    
+}
+
+.contenedor>div, header, main, aside {
+    
+    border-radius: 4px;
+   
+}
+
+/*AJUSTE DE GRID */
+
+.logo{
+    grid-column: 1/-4;
+    grid-row: 1/-2;
+}
+
+.caja-salida{
+    grid-column: 4/-1;
+    grid-row: 1/-3;
+}
+
+.mensaje {
+    grid-column: 2/-2;
+    grid-row: 2/-4;
+    
+
+}
+.vacio{
+    grid-column: 2/-2;
+    grid-row: 1/-6;
+
+}
+
+.reglas{
+    grid-column: 2/-2;
+    grid-row:4 / -3 ;
+
+}
+
+.encriptar{
+    grid-column:2/-3 ;
+    grid-row:5/-2 ;
+    display: flex;
+    justify-content: stretch;
+    align-content: center;
+    
+}
+
+.desencriptar{
+    grid-column:3/-2 ;
+    grid-row:5/-2 ;
+
+}
+#btcopiar{
+    grid-column: 4/-1;
+    grid-row: 5/-2;
+    justify-self: end;
+    
+    
+    
+}
+
+.rodapie{
+    grid-column: span 4 ;
+    grid-row:6/-1 ;
+    padding-bottom: 300px;
+    text-align: center;
+    color: #fff;
+    background-image: url(imagenes/astronomy-1867616_640.jpg);
+
+}
+
+
+/*COLORES Y AJUSTES DE TAMAÑO , ETC */
+
+.logo{
+    margin: 40px 0 0 40px;
+}
+
+.vacio{
+    margin-top: 20px;
+}
+
+/*CAJA DE COPIA*/
+.caja-salida{
+    width: 440px;
+    height: 300px;
+    margin: 20px 20px 0 0;
+    padding: 0 20px 250px 20px;
+    background: #000000;
+    box-shadow: 0px 24px 32px -8px rgba(21, 255, 17, 0.992);
+    border-radius: 32px;
+    text-align: center;
+    vertical-align: center;
+    color: #44f814;
+}
+
+.muñeco{
+    margin: 150px 0 0 40px;
+    width: 200px;
+    height: 200px;
+}
+.texto-ingresar{
+    color: #44f814;
+}
+.ningun-texto{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #44f814;
+}
+
+/*MENSAJE APARTE */
+.vacio{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 60px;
+    color: #44f814;
+    text-shadow: 2px 2px 10px rgb(0, 255, 34);
+}
+
+
+
+/*INTRODUCIR TEXTO*/
+.mensaje{
+    margin-top: 30px;
+    border: none;
+    background: none;
+    resize: none;
+    box-shadow: 10px 2px 10px 5px rgba(21, 255, 17, 0.992);
+    color: #44f814;
+    
+
+}
+
+.mensaje:focus{
+    outline: none;
+}
+#mensaje::selection{
+    caret-color: aquamarine;
+}
+
+
+/*BOTONES */
+
+.btncript{
+    width: 328px;
+    height: 67px;
+    background: #000000;
+    border-radius: 24px;
+    color: #44f814;
+    text-shadow: 2px 2px 10px rgb(0, 255, 34);
+    
+    
+
+}
+
+.btdcript{
+    width: 328px;
+    height: 67px;
+    background: #44f814;
+    border-radius: 24px;
+    color: #000;
+    text-shadow: 2px 2px 10px rgb(5, 5, 5);
+    
+
+}
+
+#copiar{
+    width: 328px;
+    height: 67px;
+    background: #000000;
+    border-radius: 24px;
+    color: #44f814;
+    text-shadow: 2px 2px 10px rgb(0, 255, 34);
+    display: none;
+    margin-right: 125px;
+    
+    
+}
+    
+    
+
+
+/* reglas*/
+
+.reglas li{
+    display: inline-block;
+    color: rgb(42, 255, 10);
+}
+

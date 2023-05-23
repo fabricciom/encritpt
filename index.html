@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang = "es">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Encriptador</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+
+    <body>
+
+        <div id="contenedor" class="contenedor">
+
+            <header class="logo">
+                <h1><img src="imagenes/Logo alura (2).png" alt="Logo de Alura"></h1> 
+            </header>
+    
+            <main class="mensaje">
+    
+                <form>
+                    <textarea type="text" cols="105" rows="27" id="mensaje" class="mensaje" placeholder="Ingrese el texto aqui"></textarea>
+                </form>
+            
+            </main>  
+            
+            <aside id="caja-salida" class="caja-salida">
+                <img src="imagenes/Muñeco.png" alt="muñeco " class="muñeco">
+                <p class="ningun-texto">Ningún mensaje fue encontrado</p>
+                <p class="texto-ingresar">Ingresa el texto que desees encriptar o desencriptar.</p>
+            </aside>
+            <div id="btcopiar"><button id="copiar" > Copiar</button></div>
+            
+            <div class="reglas">
+                <ul>
+                    <li><img src="imagenes/Vector (2).png"></li>
+                    <li><p>Solo letras minúsculas y sin acentos</p></li>
+                </ul>
+                
+            </div>
+            <div class="vacio">
+                <p>BIENVENIDO A MI ENCRIPTADOR/DESENCRIPTADOR</p>
+            </div>
+    
+            <div class="Encriptar">
+                <button id="encriptar"class="btncript">Encriptar</button>
+            </div>
+    
+            <div class="Desencriptar">
+                <button id="desencriptar"class="btdcript">Desencriptar </button>
+            </div>
+    
+            <footer class="rodapie">
+                <p>Información adicional y enlaces relevantes</p>
+                <p>Contacto: ejemplo@example.com</p>
+              </footer>
+
+        </div>
+
+        <script>
+            /*conexion encriptador */
+
+            var encriptarButton = document.getElementById("encriptar");
+            encriptarButton.addEventListener("click", function() {
+
+                var mensaje = document.getElementById("mensaje").value;
+                var cajamostrar = document.getElementById("caja-salida");
+                var contenido = encriptar(mensaje);
+
+                cajamostrar.innerHTML = ""; 
+                document.getElementById("mensaje").value = "";
+                cajamostrar.innerHTML = contenido;
+                cajamostrar.style.textAlign= "left"
+                cajamostrar.style.paddingLeft = "30px"
+                cajamostrar.style.paddingTop = "30px"
+
+                vercopiar()
+                
+            });
+
+            /*conexion desencriptador */
+
+            var desencriptarButton = document.getElementById("desencriptar");
+            desencriptarButton.addEventListener("click", function() {
+
+                var mensajeEncriptado = document.getElementById("mensaje").value;
+                var cajamostrar = document.getElementById("caja-salida");
+                var contenido = desencriptar(mensajeEncriptado); 
+
+                cajamostrar.innerHTML = ""; 
+                document.getElementById("mensaje").value = "";
+                cajamostrar.innerHTML = contenido;
+                cajamostrar.style.textAlign= "left"
+                cajamostrar.style.paddingLeft = "30px"
+                cajamostrar.style.paddingTop = "30px"
+                
+
+                vercopiar()
+            });
+
+            /* mostrar boton copiar */
+            var cajaSalida = document.getElementById("caja-salida");
+            var botoncopiar = document.getElementById("copiar");
+
+            cajaSalida.addEventListener("input", vercopiar);
+
+            /* copiar */
+
+            document.addEventListener("keydown", function(event) {
+                if (event.ctrlKey && event.key === "c") {
+                    // Copiar el contenido de la caja de texto al portapapeles
+                    var tempInput = document.createElement("input");
+                    tempInput.value = document.getElementById("mensaje").value;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(tempInput);
+                }
+            });
+
+            /* restricciones de ingreso */
+            var mensajeTextArea = document.getElementById("mensaje");
+
+            mensajeTextArea.addEventListener("keydown", function(event) {
+            var tecla = event.key;
+
+            // Verificar si se presionó una tecla que no sea una letra minúscula, espacio o borrar
+            if (!/^[a-z\s]$/.test(tecla) && tecla !== "Backspace") {
+                // Evitar la entrada del carácter
+                event.preventDefault();
+            }
+            });
+
+
+            /*funciones */
+            function encriptar(mensaje) {
+                var lista_palabra = [];
+
+                function meterpalabra() {
+                    for (var i = 0; i < mensaje.length; i++) {
+                        lista_palabra.push(mensaje[i]);
+                    }
+                }
+
+                function logica() {
+                    for (var i = 0; i < lista_palabra.length; i++) {
+                        if (lista_palabra[i] == "a") {
+                            const valor = "i";
+                            let posición = i + 1;
+
+                            lista_palabra.splice(posición, 0, valor);
+                            i = i + 2;
+                        } 
+                        else if (lista_palabra[i] == "e") {
+                            const valor0 = "n";
+                            const valor1 = "t";
+                            const valor2 = "e";
+                            const valor3 = "r";
+                            let posición = i + 1;
+
+                            lista_palabra.splice(posición, 0, valor0, valor1, valor2, valor3);
+                            i = i + 5;
+                        } 
+                        else if (lista_palabra[i] == "i") {
+                            const valor4 = "m";
+                            const valor5 = "e";
+                            const valor6 = "s";
+                            let posición = i + 1;
+
+                            lista_palabra.splice(posición, 0, valor4, valor5, valor6);
+                            i = i + 4;
+                        } 
+                        else if (lista_palabra[i] == "o") {
+                            const valor7 = "b";
+                            const valor8 = "e";
+                            const valor9 = "r";
+                            var posición = i + 1;
+
+                            lista_palabra.splice(posición, 0, valor7, valor8, valor9);
+                            i = i + 4;
+                        } 
+                        else if (lista_palabra[i] == "u") {
+                            const valor10 = "f";
+                            const valor11 = "a";
+                            const valor12 = "t";
+                            var posición = i + 1;
+
+                            lista_palabra.splice(posición, 0, valor10, valor11, valor12);
+                            i = i + 4;
+                        }
+                    }
+                }
+
+                meterpalabra();
+                logica();
+
+                var resultado = lista_palabra.join('');
+                console.log(resultado);
+                return resultado
+            }
+
+
+            function desencriptar(mensajeEncriptado) {
+
+                mensajeEncriptado = mensajeEncriptado.replace(/ai/gi, "a")
+                .replace(/enter/gi, "e")
+                .replace(/imes/gi, "i")
+                .replace(/ober/gi, "o")
+                .replace(/ufat/gi, "u");
+
+                console.log(mensajeEncriptado);
+                return mensajeEncriptado
+            }
+
+            function vercopiar() {
+                if (cajaSalida.textContent.trim() !== "") {
+                    botoncopiar.style.display = "block";
+                    botoncopiar.addEventListener("click", function() {
+                        // Copiar el contenido de la caja de salida al portapapeles
+                        var tempInput = document.createElement("input");
+                        tempInput.value = cajaSalida.textContent.trim();
+                        document.body.appendChild(tempInput);
+                        tempInput.select();
+                        document.execCommand("copy");
+                        document.body.removeChild(tempInput);
+                    });
+                } 
+                else {
+                    botoncopiar.style.display = "none";
+                }
+            }
+            
+            
+            </script>
+
+    </body>
+
+</html>
